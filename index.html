@@ -3,67 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XuperTV Web Player</title>
-    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <title>Calculadora BCV</title>
     <style>
-        body { background-color: #0f0f0f; color: white; font-family: sans-serif; text-align: center; margin: 0; }
-        .container { padding: 20px; }
-        h1 { color: #e50914; }
-        #player-container { width: 100%; max-width: 800px; margin: 20px auto; background: #000; border-radius: 8px; overflow: hidden; }
-        .login-box { background: #1f1f1f; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 50px; }
-        input { display: block; width: 250px; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; }
-        button { width: 100%; padding: 10px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .video-js { width: 100% !important; height: 450px !important; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 { color: #004a99; }
+        .input-group { margin-bottom: 1rem; text-align: left; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #004a99;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover { background-color: #003366; }
+        #resultado {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .tasa-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container" id="loginArea">
-        <h1>XuperTV Web</h1>
-        <div class="login-box">
-            <input type="text" id="user" placeholder="Tu Usuario">
-            <input type="password" id="pass" placeholder="Tu Contraseña">
-            <button onclick="startTV()">Entrar a la TV</button>
-        </div>
+<div class="calculator-card">
+    <h2>Calculadora BCV</h2>
+    
+    <div class="input-group">
+        <label for="tasa">Tasa BCV Actual (Bs):</label>
+        <input type="number" id="tasa" placeholder="Ej. 36.50" step="0.0001">
     </div>
-
-    <div id="playerArea" style="display:none;">
-        <h2 id="status">Cargando canal...</h2>
-        <div id="player-container">
-            <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" data-setup="{}">
-                <p class="vjs-no-js">Para ver este video, habilita JavaScript.</p>
-            </video>
-        </div>
-        <button onclick="location.reload()" style="width: auto; padding: 10px 20px;">Cerrar Sesión</button>
+    
+    <div class="input-group">
+        <label for="dolares">Cantidad en Dólares ($):</label>
+        <input type="number" id="dolares" placeholder="0.00" step="0.01">
     </div>
+    
+    <button onclick="calcularBolivares()">Calcular</button>
+    
+    <div id="resultado"></div>
+    <p class="tasa-info">Tasa de referencia (actualizar manualmente según <a href="https://www.bcv.org.ve/" target="_blank">BCV</a>).</p>
+</div>
 
-    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-    <script>
-        function startTV() {
-            const user = document.getElementById('user').value;
-            const pass = document.getElementById('pass').value;
-            const host = "http://thexupertv.com:8080"; // El host que sacamos de tu APK
-
-            if(!user || !pass) return alert("Pon tus datos");
-
-            // Ocultamos login, mostramos player
-            document.getElementById('loginArea').style.display = 'none';
-            document.getElementById('playerArea').style.display = 'block';
-
-            // URL del stream (usamos el formato de Xtream Codes para live streams)
-            // Nota: Esto intentará cargar el stream por defecto.
-            const streamUrl = `${host}/live/${user}/${pass}/1.m3u8`; 
-
-            const player = videojs('my-video');
-            player.src({
-                src: streamUrl,
-                type: 'application/x-mpegURL'
-            });
-            
-            player.play();
-            document.getElementById('status').innerText = "Reproduciendo XuperTV";
+<script>
+    function calcularBolivares() {
+        const tasa = parseFloat(document.getElementById('tasa').value);
+        const dolares = parseFloat(document.getElementById('dolares').value);
+        const resultadoDiv = document.getElementById('resultado');
+        
+        if (isNaN(tasa) || isNaN(dolares) || dolares < 0) {
+            resultadoDiv.innerHTML = "Por favor, ingresa valores válidos.";
+            resultadoDiv.style.color = "red";
+            return;
         }
-    </script>
-</body>
+        
+        const bolivares = dolares * tasa;
+        
+        resultadoDiv.innerHTML = `Total: ${bolivares.toFixed(2)} Bs.`;
+        resultadoDiv.style.color = "#333";
+    }
+</script>
 
+</body>
 </html>
