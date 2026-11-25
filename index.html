@@ -27,31 +27,36 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300 selection:bg-indigo-500 selection:text-white">
 
     <!-- =====================================================================
-         CONFIGURACIÓN DE ARCHIVOS APK EN LA CARPETA RAÍZ
-         Coloca este index.html junto con Xuper_fixed.apk y Xuper.apk
-         en la misma carpeta raíz de tu servidor (public_html/, www/, etc.).
+         CONFIGURACIÓN DE ENLACES EXTERNOS DIRECTOS PARA CADA APK
+         Reemplaza únicamente los valores de `urlDescarga` con tus enlaces
+         directos de Google Drive, GitHub Releases, MediaFire o Dropbox.
     ====================================================================== -->
     <script>
+        const ENLACE_XUPER_FIXED = "https://www.mediafire.com/file/jyzhokmt6qrw2er/Xuper.apk/file";
+        const ENLACE_XUPER_ORIGINAL = "https://www.mediafire.com/file/x5yguxdcc859rvg/Xuper_fixed.apk/file";
+
         const ARCHIVOS_DISPONIBLES = [
             {
                 id: "xuper-fixed",
                 nombreArchivo: "Xuper_fixed.apk",
-                rutaArchivo: "./Xuper_fixed.apk",
+                urlDescarga: ENLACE_XUPER_FIXED,
+                proveedor: "Enlace Directo",
                 titulo: "Xuper (Versión Corregida)",
                 etiqueta: "Versión Corregida • Recomendada",
                 recomendado: true,
-                descripcion: "Incluye parches de estabilidad, corrección de errores de cierre inesperado y mejor compatibilidad en Android.",
+                descripcion: "Version beta",
                 tamano: "35.7 MB (35,705 KB)",
                 formato: "APK • Android"
             },
             {
                 id: "xuper-original",
                 nombreArchivo: "Xuper.apk",
-                rutaArchivo: "./Xuper.apk",
+                urlDescarga: ENLACE_XUPER_ORIGINAL,
+                proveedor: "Enlace Directo",
                 titulo: "Xuper (Versión Original)",
                 etiqueta: "Versión Original • Estándar",
                 recomendado: false,
-                descripcion: "Compilación estándar sin modificaciones. Ideal si la versión corregida presenta incompatibilidad con tu dispositivo.",
+                descripcion: "Verison Original",
                 tamano: "35.7 MB",
                 formato: "APK • Android"
             }
@@ -67,7 +72,7 @@
                     <path d="M17.523 15.3414C16.9673 15.3414 16.5152 14.8893 16.5152 14.3336C16.5152 13.7779 16.9673 13.3258 17.523 13.3258C18.0787 13.3258 18.5308 13.7779 18.5308 14.3336C18.5308 14.8893 18.0787 15.3414 17.523 15.3414ZM6.47704 15.3414C5.92134 15.3414 5.46924 14.8893 5.46924 14.3336C5.46924 13.7779 5.92134 13.3258 6.47704 13.3258C7.03274 13.3258 7.48484 13.7779 7.48484 14.3336C7.48484 14.8893 7.03274 15.3414 6.47704 15.3414ZM17.8845 9.2662L19.9038 5.7686C20.017 5.5726 19.9499 5.3219 19.7539 5.2087C19.5579 5.0955 19.3072 5.1626 19.194 5.3586L17.1494 8.9001C15.631 8.2072 13.8768 7.8182 12 7.8182C10.1232 7.8182 8.36904 8.2072 6.85064 8.9001L4.80604 5.3586C4.69284 5.1626 4.44214 5.0955 4.24614 5.2087C4.05014 5.3219 3.98304 5.5726 4.09624 5.7686L6.11554 9.2662C2.65104 11.1516 0.34082 14.7161 0.0361328 18.8864H23.9639C23.6592 14.7161 21.349 11.1516 17.8845 9.2662Z"/>
                 </svg>
             </div>
-            <span class="font-semibold text-sm tracking-tight text-slate-700 dark:text-slate-200">Portal de Descargas Android</span>
+            <span class="font-semibold text-sm tracking-tight text-slate-700 dark:text-slate-200">GABOLOG</span>
         </div>
 
         <!-- Botón de cambio de tema (Claro / Oscuro) -->
@@ -90,13 +95,13 @@
         <div class="text-center mb-7">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/70 dark:text-emerald-400 border border-emerald-200/70 dark:border-emerald-800/60 mb-3">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Paquetes APK Directos desde la Raíz
+                DESCARGA COPIA COMPATIBLE
             </span>
             <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Descargar Xuper para Android
+                Descargar Xuper TV
             </h1>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
-                Elige la edición que prefieras descargar. Ambas se encuentran alojadas directamente en nuestro servidor principal sin acortadores ni esperas.
+                
             </p>
         </div>
 
@@ -129,28 +134,17 @@
             <!-- Las tarjetas se renderizan dinámicamente desde ARCHIVOS_DISPONIBLES -->
         </div>
 
-        <!-- Sección Discreta / Colapsable: Instrucciones Rápidas de Despliegue -->
+        <!-- Sección Discreta / Colapsable: Guía para Configurar Enlaces Externos Directos -->
         <div class="mt-7">
             <details class="group bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden transition-all">
                 <summary class="flex items-center justify-between px-5 py-3.5 cursor-pointer select-none text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
                     <span class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                        </svg>
-                        ¿Cómo subir estos archivos a la carpeta raíz del hosting?
-                    </span>
-                    <svg class="w-4 h-4 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                </summary>
-                <div class="px-5 pb-4 pt-1 text-xs text-slate-600 dark:text-slate-300 space-y-2 border-t border-slate-100 dark:border-slate-800/80">
-                    <p>Asegúrate de que los <strong>3 archivos</strong> estén juntos dentro de la carpeta raíz de tu servidor (<code class="font-mono">public_html/</code>, <code class="font-mono">www/</code> o <code class="font-mono">htdocs/</code>):</p>
-                    <ul class="list-disc list-inside space-y-1 text-slate-500 dark:text-slate-400 font-mono">
-                        <li>index.html</li>
-                        <li>Xuper_fixed.apk</li>
-                        <li>Xuper.apk</li>
-                    </ul>
-                    <p class="text-slate-500 dark:text-slate-400 pt-1">Nota: Los nombres distinguen mayúsculas y minúsculas en servidores Linux.</p>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                        
+
+                
+                    </div>
                 </div>
             </details>
         </div>
@@ -158,7 +152,7 @@
 
     <!-- Pie de página minimalista -->
     <footer class="w-full max-w-4xl mx-auto px-4 sm:px-6 pb-6 text-center text-xs text-slate-400 dark:text-slate-500">
-        Descarga directa desde servidor raíz • Android APK
+        copyright @GABOLOG
     </footer>
 
     <!-- Lógica de Aplicación -->
@@ -173,7 +167,7 @@
 
             let bannerTimeout = null;
 
-            // 1. Renderizar dinámicamente ambas tarjetas APK
+            // 1. Renderizar dinámicamente ambas tarjetas APK con enlaces externos
             const renderCards = () => {
                 cardsGrid.innerHTML = '';
 
@@ -235,7 +229,7 @@
                             </p>
                         </div>
 
-                        <!-- Metadatos y Botón de Descarga -->
+                        <!-- Metadatos y Botón de Descarga Externa -->
                         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
                             <div class="flex items-center justify-between text-xs mb-4">
                                 <div>
@@ -248,9 +242,11 @@
                                 </div>
                             </div>
 
-                            <a href="${archivo.rutaArchivo}"
-                               download="${archivo.nombreArchivo}"
+                            <a href="${archivo.urlDescarga}"
+                               target="_blank"
+                               rel="noopener noreferrer"
                                data-filename="${archivo.nombreArchivo}"
+                               data-url="${archivo.urlDescarga}"
                                class="apk-download-btn group w-full flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] focus:outline-none focus:ring-4 ${buttonClasses}">
                                 <svg class="btn-icon w-5 h-5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -271,15 +267,30 @@
                 const buttons = document.querySelectorAll('.apk-download-btn');
 
                 buttons.forEach((btn) => {
-                    btn.addEventListener('click', () => {
+                    btn.addEventListener('click', (e) => {
                         const fileName = btn.getAttribute('data-filename');
+                        const targetUrl = btn.getAttribute('data-url');
                         const labelEl = btn.querySelector('.btn-label');
                         const originalLabel = `Descargar ${fileName}`;
 
                         if (bannerTimeout) clearTimeout(bannerTimeout);
 
+                        // Aviso amigable si aún no se ha reemplazado la URL de ejemplo
+                        if (targetUrl.includes('tu-usuario/tu-repo')) {
+                            e.preventDefault();
+                            globalStatusBanner.classList.remove('hidden');
+                            bannerIcon.innerHTML = `
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            `;
+                            bannerTitle.textContent = `Enlace de ejemplo detectado para ${fileName}`;
+                            bannerMessage.textContent = `Abre el archivo index.html y reemplaza la variable ENLACE_XUPER_FIXED / ENLACE_XUPER_ORIGINAL con tu enlace real de Google Drive, MediaFire o GitHub Releases.`;
+                            return;
+                        }
+
                         // Cambiar texto temporalmente en el botón pulsado
-                        labelEl.textContent = `Iniciando descarga...`;
+                        labelEl.textContent = `Abriendo enlace de descarga...`;
 
                         // Mostrar banner de notificación superior
                         globalStatusBanner.classList.remove('hidden');
@@ -288,10 +299,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
                         `;
-                        bannerTitle.textContent = `Iniciando descarga de ${fileName}...`;
-                        bannerMessage.textContent = `Tu navegador está descargando "${fileName}" directamente desde la carpeta raíz del servidor.`;
+                        bannerTitle.textContent = `Redirigiendo a la descarga de ${fileName}...`;
+                        bannerMessage.textContent = `Se ha abierto el enlace directo externo para descargar "${fileName}". Si tu navegador bloquea ventanas emergentes, permite la descarga.`;
 
-                        // Actualizar confirmación tras 1.2 segundos
+                        // Actualizar confirmación tras 1.4 segundos
                         bannerTimeout = setTimeout(() => {
                             labelEl.textContent = originalLabel;
                             bannerIcon.innerHTML = `
@@ -299,9 +310,9 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             `;
-                            bannerTitle.textContent = `¡Descarga de ${fileName} iniciada!`;
+                            bannerTitle.textContent = `¡Enlace de ${fileName} abierto!`;
                             bannerMessage.textContent = `Revisa la barra de notificaciones o la carpeta "Descargas" de tu dispositivo Android para instalar el APK.`;
-                        }, 1200);
+                        }, 1400);
                     });
                 });
             };
